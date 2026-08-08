@@ -2,9 +2,9 @@
 
 IIO → DSU (Cemuhook) motion bridge for Linux handhelds.
 
-This fork adds **ROG Xbox Ally X** support, including automatic startup on SteamOS and a device-specific configuration for its BMI323 IMU.
+This fork adds **ROG Xbox Ally X support** to `iio-dsu-bridge`, including support for its BMI323 IMU exposed through Linux IIO.
 
-Based on the original project by [Sebalvarez97](https://github.com/Sebalvarez97/iio-dsu-bridge).
+The bridge reads the accelerometer and gyroscope from the IIO subsystem and exposes them through a local DSU/Cemuhook server.
 
 ## Supported Devices
 
@@ -12,17 +12,15 @@ Based on the original project by [Sebalvarez97](https://github.com/Sebalvarez97/
 - **ROG Ally** - Combined IMU device
 - **Legion Go S** - Separate accelerometer and gyroscope IIO devices
 
+The original device support remains available.
 
-Credits
+---
 
-This project is based on:
+## ROG Xbox Ally X
 
-Sebalvarez97 / iio-dsu-bridge
+The ROG Xbox Ally X exposes its motion sensors through Linux IIO instead of the HID interface used by Steam Deck gyro solutions.
 
-https://github.com/Sebalvarez97/iio-dsu-bridge
+This project reads the BMI323 directly from:
 
-Special thanks to:
-
-Sebalvarez97 - original IIO → DSU bridge
-Tobi Demeco - Legion Go S support, configurations and improvements
-Christopher Lott - Legion Go S support
+```text
+/sys/bus/iio/devices/iio:deviceX
